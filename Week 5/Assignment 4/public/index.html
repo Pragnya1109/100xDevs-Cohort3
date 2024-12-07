@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 4 (CORS)</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script>
 </head>
 <body>
+    <h1>Sum Calculator</h1>
+
+    <input type="number" name="" id="a" placeholder="Enter first number" required/>
+    <input type="number" name="" id="b" placeholder="Enter second number" required/>
+
+    <button onclick="calculateSum()">Calculate</button>
+    <p id="result"></p>
+
+    <script>
+        async function calculateSum() {
+            const a = document.getElementById('a').value;
+            const b = document.getElementById('b').value;
+
+            try {
+                const res = await fetch('https://improved-carnival-6qvp56756493r4p4-3001.app.github.dev/sum',{
+                method:'POST',
+                headers: {
+                    'Content-Type' : 'application/json',
+                },
+                body: JSON.stringify({a,b}),
+            });
+
+            const data = await res.json()
+            document.getElementById('result').innerText = `Answer: ${data.answer}`;
+            console.log(data)
+            } catch (error) {
+                console.log('Error: ', error)
+                document.getElementById('result').innerText = 'Error calculating the sum'
+            }
+        }
+    </script>
     
 </body>
 </html>
