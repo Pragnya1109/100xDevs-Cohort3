@@ -1,14 +1,14 @@
 export function PostComponent({ name, title, time, profile, description }) {
     return (
-        <div style={{ border: "1px solid black", borderRadius: "8px", padding: "15px", margin: "10px 0", backgroundColor: "white", maxWidth: "400px" }}>
-            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+        <div style={styles.card}>
+            <div style={styles.profileHeader}>
 
                 <img src={profile} alt="profile"
-                    style={{ width: "50px", height: "50px", borderRadius: "50%", marginRight: "10px" }} />
+                    style={styles.image} />
 
                 <div>
-                    <div style={{ fontWeight: "bold", fontSize: "14px" }}>{name}</div>
-                    <div style={{ fontWeight: "gray", fontSize: "12px" }}>{title}</div>
+                    <div style={styles.name}>{name}</div>
+                    <div style={styles.title}>{title}</div>
                     <div style={{ fontSize: "12px" }}>{time}</div>
                 </div>
             </div>
@@ -16,4 +16,34 @@ export function PostComponent({ name, title, time, profile, description }) {
         </div>
     )
 
+}
+
+const styles = {
+    card: {
+        border: "1px solid black",
+        borderRadius: "8px",
+        padding: "15px",
+        margin: "10px 0",
+        backgroundColor: "white",
+        maxWidth: "400px"
+    },
+    profileHeader: {
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "10px"
+    },
+    image: {
+        width: "50px",
+        height: "50px",
+        borderRadius: "50%",
+        marginRight: "10px"
+    },
+    name: {
+        fontWeight: "bold",
+        fontSize: "14px"
+    },
+    title: {
+        fontWeight: "gray",
+        fontSize: "12px"
+    },
 }
